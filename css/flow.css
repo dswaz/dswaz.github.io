@@ -1023,3 +1023,33 @@ body.modal-open .modal {
     height: 200px;
   }
 }
+
+/* === EXTERNAL NAV LINK (services page) ===
+   Deliberately NOT .nav-link: flow.js binds those by index
+   and calls preventDefault(), which would swallow navigation. */
+.nav-external {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: color 400ms var(--flow);
+}
+
+.nav-external:hover { color: var(--cyan-light); }
+
+/* Match .nav-link sizing at the same breakpoints */
+@media (max-width: 768px) {
+  .nav-external { font-size: 0.65rem; padding: 0.35rem 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .nav-external { font-size: 0.625rem; letter-spacing: 0.03em; padding: 0.3rem 0.3rem; }
+  /* Six links overflow a phone. Hide "Start" (the landing screen; dots and swipe
+     still reach it). display:none keeps it in the DOM, so flow.js index binding holds. */
+  .nav-minimal .nav-link:first-child { display: none; }
+  .nav-minimal .nav-link { padding: 0.3rem 0.3rem; }
+  .nav-minimal { gap: 0.2rem; }
+}

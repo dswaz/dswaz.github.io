@@ -1,0 +1,364 @@
+/* ============================================
+   SERVICES - vertical scroll companion page
+   Shares the Flow design language (Sora, deep
+   ground, cyan accents) but scrolls normally.
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --deep: #0a0f14;
+  --slate: #1a2332;
+  --cyan: #06b6d4;
+  --cyan-light: #22d3ee;
+  --white: #ffffff;
+  --mist: #f8fafc;
+  --fog: #cbd5e1;
+  --font: 'Sora', sans-serif;
+  --flow: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--mist);
+  background: var(--deep);
+}
+
+h1, h2, h3 { font-family: var(--font); line-height: 1.2; color: var(--white); }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+h3 { font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 600; margin-bottom: 0.5rem; }
+a { color: inherit; text-decoration: none; }
+
+/* === NAV === */
+.nav-minimal {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(10, 15, 20, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.08);
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(248, 250, 252, 0.5);
+  transition: color 400ms var(--flow);
+}
+
+.nav-link:hover { color: rgba(248, 250, 252, 0.9); }
+.nav-link.active { color: var(--cyan); }
+
+/* === LAYOUT === */
+.wrap {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.band { padding: 5.5rem 0; border-top: 1px solid rgba(203, 213, 225, 0.08); }
+
+/* === HERO === */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: min(82vh, 820px);
+  padding: 8rem 0 5rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/dollysods.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10, 15, 20, 0.45) 0%,
+    rgba(10, 15, 20, 0.1) 40%,
+    rgba(10, 15, 20, 0.95) 100%);
+}
+
+.hero .wrap { position: relative; z-index: 10; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+  margin-bottom: 1.25rem;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--fog);
+  max-width: 44rem;
+  margin-top: 1.75rem;
+  line-height: 1.65;
+}
+
+.hero-sub + .hero-sub { margin-top: 1rem; }
+
+/* === BUTTONS === */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.7rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 300ms var(--flow);
+}
+
+.btn-primary {
+  background: var(--cyan);
+  color: var(--deep);
+}
+
+.btn-primary:hover { background: var(--cyan-light); transform: translateY(-2px); }
+
+.btn-ghost {
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  color: var(--mist);
+}
+
+.btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* === CARDS (cyan rule, matching .approach-item) === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem 3rem;
+}
+
+.card {
+  border-left: 2px solid rgba(6, 182, 212, 0.3);
+  padding-left: 1.5rem;
+}
+
+.card h3 { color: var(--white); margin-bottom: 0.75rem; }
+.card p { color: var(--fog); font-size: 0.95rem; line-height: 1.6; }
+
+/* === NUMBERED SERVICE BLOCKS === */
+.service {
+  border-left: 2px solid rgba(6, 182, 212, 0.3);
+  padding: 0 0 0 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.service:last-child { margin-bottom: 0; }
+
+.service-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.service p { color: var(--fog); font-size: 0.97rem; max-width: 46rem; }
+
+.service ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.service li {
+  color: var(--fog);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  padding-left: 1.15rem;
+  position: relative;
+  margin-bottom: 0.45rem;
+}
+
+.service li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.65);
+}
+
+/* === LEAD PARAGRAPH === */
+.lead {
+  font-size: 1.08rem;
+  color: var(--fog);
+  max-width: 46rem;
+  margin-bottom: 2.5rem;
+}
+
+/* === PROOF / STATUS PANEL === */
+.panel {
+  background: rgba(26, 35, 50, 0.55);
+  border: 1px solid rgba(203, 213, 225, 0.09);
+  border-radius: 3px;
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel:last-of-type { margin-bottom: 0; }
+
+.panel-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: 2px;
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.panel p { color: var(--fog); font-size: 0.96rem; }
+.panel p + p { margin-top: 0.85rem; }
+
+/* === PROCESS STEPS === */
+.steps { counter-reset: step; }
+
+.step {
+  position: relative;
+  padding-left: 3.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.step:last-child { margin-bottom: 0; }
+
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.step p { color: var(--fog); font-size: 0.95rem; max-width: 44rem; }
+
+/* === CONTACT === */
+.contact { text-align: center; }
+.contact .lead { margin-left: auto; margin-right: auto; }
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--mist);
+  font-size: 1.02rem;
+  transition: color 300ms var(--flow);
+}
+
+.contact-email:hover { color: var(--cyan); }
+.contact-email svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+.contact-icon {
+  color: var(--fog);
+  transition: color 300ms var(--flow);
+}
+
+.contact-icon:hover { color: var(--cyan); }
+.contact-icon svg { width: 22px; height: 22px; display: block; }
+
+/* === SERVICE GROUP DIVIDER (Beyond GIS) === */
+.service-group {
+  margin: 4.5rem 0 3rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(203, 213, 225, 0.08);
+}
+
+.service-group-title {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  margin-bottom: 1rem;
+}
+
+.service-group .lead { margin-bottom: 0; }
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .nav-minimal { gap: 1.35rem; padding: 1rem; }
+  .nav-link { font-size: 0.7rem; letter-spacing: 0.08em; }
+  .band { padding: 4rem 0; }
+  .hero { min-height: auto; padding: 7rem 0 4rem; }
+  .panel { padding: 1.5rem 1.35rem; }
+  .cta-row { flex-direction: column; align-items: flex-start; }
+  .btn { width: 100%; justify-content: center; }
+  .contact-links { gap: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+  .btn-primary:hover { transform: none; }
+}
+
+/* Four audience cards read better as 2x2 than 3+1 */
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* Phones: keep only What I Do / Contact / About Me so the nav fits on one line */
+@media (max-width: 640px) {
+  .nav-secondary { display: none; }
+}

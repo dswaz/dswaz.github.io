@@ -21,6 +21,8 @@
     <a href="#journey" class="nav-link">Journey</a>
     <a href="#work" class="nav-link">Projects</a>
     <a href="#connect" class="nav-link">Connect</a>
+    <!-- Not a .nav-link: flow.js binds those by index and preventDefaults them. -->
+    <a href="services.html" class="nav-external">Consulting</a>
   </nav>
 
   <!-- Progress Dots -->
@@ -101,7 +103,26 @@
               
               <div class="timeline-item expandable">
                 <div class="timeline-header">
-                  <div class="timeline-year">2024–Now</div>
+                  <div class="timeline-year">2026–Now</div>
+                  <div class="timeline-summary">
+                    <h3>Senior GIS Analyst / Developer <span class="expand-icon">›</span></h3>
+                    <div class="timeline-org">Clark Public Utilities · WA</div>
+                    <p class="timeline-oneliner">Utility GIS, ArcGIS Enterprise administration, and custom application development for a public power and water utility.</p>
+                  </div>
+                </div>
+                <div class="timeline-details">
+                  <ul>
+                    <li>Build and maintain GIS systems supporting utility operations and asset management</li>
+                    <li>Develop custom web applications and mapping tools for office and field staff</li>
+                    <li>Administer the ArcGIS Enterprise environment, including portal and server configuration, upgrades, security, and user access</li>
+                    <li>Support data standards and system integrations across utility departments</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item expandable">
+                <div class="timeline-header">
+                  <div class="timeline-year">2024–2026</div>
                   <div class="timeline-summary">
                     <h3>Geospatial Systems Specialist <span class="expand-icon">›</span></h3>
                     <div class="timeline-org">Intterra · Remote</div>
@@ -110,10 +131,10 @@
                 </div>
                 <div class="timeline-details">
                   <ul>
-                    <li>Partner with federal, state, and local agencies to align data standards with public safety and resilience policy objectives</li>
-                    <li>Develop and maintain national-scale data systems informing wildfire mitigation, infrastructure planning, and policy compliance reporting</li>
-                    <li>Redesign enterprise GIS data models to eliminate inefficiencies and future-proof architecture for multi-agency coordination</li>
-                    <li>Advise leadership on data integrity, privacy, and operational transparency standards</li>
+                    <li>Partnered with federal, state, and local agencies to align data standards with public safety and resilience policy objectives</li>
+                    <li>Developed and maintained national-scale data systems informing wildfire mitigation, infrastructure planning, and policy compliance reporting</li>
+                    <li>Redesigned enterprise GIS data models to eliminate inefficiencies and future-proof architecture for multi-agency coordination</li>
+                    <li>Advised leadership on data integrity, privacy, and operational transparency standards</li>
                   </ul>
                 </div>
               </div>
@@ -300,13 +321,30 @@
             <!-- Featured Projects -->
             <div class="featured-projects">
               <div class="featured-label">Featured</div>
-              
+
+              <div class="featured-project">
+                <div class="featured-image">
+                  <img src="images/plumefront.png" alt="PlumeFront">
+                </div>
+                <div class="featured-content">
+                  <h3>PlumeFront</h3>
+                  <p>Live wildfire, smoke, and air quality map pulling active incidents, fire perimeters, satellite smoke plumes, and AQI from NIFC, NOAA, and EPA AirNow. Fully static and keyless, with an hourly automated NOAA HRRR wind pipeline.</p>
+                  <div class="featured-tags">
+                    <span class="featured-tag">JavaScript</span>
+                    <span class="featured-tag">Leaflet</span>
+                    <span class="featured-tag">Python</span>
+                    <span class="featured-tag">GitHub Actions</span>
+                  </div>
+                  <a href="https://plumefront.com" target="_blank" rel="noopener" class="project-link">Visit App</a>
+                </div>
+              </div>
+
               <div class="featured-project">
                 <div class="featured-image">
                   <img src="images/Ravensfixedbrief.JPG" alt="Raven's Roles">
                 </div>
                 <div class="featured-content">
-                  <h3>Raven's Roles Database</h3>
+                  <h3>Raven's Roles Job Board</h3>
                   <p>Interactive platform aggregating natural resources careers with automated scraping and spatial search.</p>
                   <div class="featured-tags">
                     <span class="featured-tag">Python</span>
